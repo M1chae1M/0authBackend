@@ -1,0 +1,20 @@
+export default function ExistingEndpoints(req,res){
+    res.json({
+        "endpoints":[
+            '/test',
+            '/all',
+            '/logged',
+            '/logout',
+            '/login',
+            '/signin',
+            '/select',
+            '/insert',
+            '/update',
+            '/delete',
+            '/auth/:type',
+            '/auth/:type/callback',
+            '/auth/:type/success',
+            '/auth/:type/failure',
+        ]
+    })
+}

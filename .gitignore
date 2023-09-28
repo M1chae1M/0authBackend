@@ -1,0 +1,9 @@
+node_modules
+all/dist
+all/dist/
+all/dist/**
+.vercel
+front
+.env
+dist
+notatki.txt
