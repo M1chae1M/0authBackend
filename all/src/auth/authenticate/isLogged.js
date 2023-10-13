@@ -1,9 +1,18 @@
-export default function isLogged(req,res){
-    const {session}=req
-    const {passport,cookie}=session
-    if(passport && cookie){
-        res.json({message:'jesteś zalogowany',logged:true})
+import {checkToken} from "../../token/checkToken"
+
+export function isLogged(req,res){
+    const checked=checkToken(req.body.token)
+    if(checked){
+        res.json({
+            username:checked.login,
+            message:'jesteś zalogowany',
+            logged:true
+        })
     }else{
-        res.json({message:'nie jesteś zalogowany',logged:false})
+        res.json({
+            username:checked.login??undefined,
+            message:'nie jesteś zalogowany',
+            logged:false
+        })
     }
 }

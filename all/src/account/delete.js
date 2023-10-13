@@ -1,14 +1,13 @@
 import {baza} from "../database"
+import {checkToken} from "../token/checkToken"
 
-export default async function deleteUser(req,res){
-    const {username}=req.session
-    const result=await baza.delete('short',{login:username}).catch(err=>console.log(err))
+export async function deleteUser(req,res){
+    const {login}=checkToken(req.body.token)
+
+    const result=await baza.delete('short',{login:login}).catch(err=>console.log(err))
     if(result){
-        req.session.cookie={}
-        delete req.session.passport
-        delete req.session.username
-        res.json({message:`Udało Ci się poprawnie usunąć swojego użytkownika o loginie: ${username}.`})
+        res.json({message:`Udało Ci się poprawnie usunąć swojego użytkownika o loginie: ${login}.`})
     }else{
-        res.json({message:`Coś poszło nie tak przy usuwaniu użytkownika o loginie: ${username}. Spróbuj ponownie później.`})
+        res.json({message:`Coś poszło nie tak przy usuwaniu użytkownika o loginie: ${login}. Spróbuj ponownie później.`})
     }
 }

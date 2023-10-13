@@ -1,7 +1,9 @@
-export default function loginAuthMiddleware(req,res,next){
-    if(req.isAuthenticated()){
-        const {username}=req.session
-        res.json(`jesteś już zalogowany jako: ${username}`)
+import {checkToken} from "../../token/checkToken"
+
+export function loginAuthMiddleware(req,res,next){
+    const checked=checkToken(req.body.token)
+    if(checked){
+        res.json(`jesteś już zalogowany jako: ${checked.login}`)
     }else{
         next()
     }

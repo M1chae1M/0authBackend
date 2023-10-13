@@ -1,6 +1,3 @@
-export default function logout(req,res){
-    req.session.cookie={}
-    delete req.session.passport
-    delete req.session.username
+export function logout(req,res){
     res.json({message:'wylogowałeś się',success:true, logged:false})
 }

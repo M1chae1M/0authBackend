@@ -1,8 +1,10 @@
-import {baza} from "../database";
+import {baza} from "../database"
+import {checkToken} from "../token/checkToken"
 
-export default async function userData(req,res){
-    const {username}=req.session
-    const results=await baza.select('short',[],{login:username}).catch(err=>console.log(err))
+export async function userData(req,res){
+    const {login}=checkToken(req.body.token)
+
+    const results=await baza.select('short',[],{login:login}).catch(err=>console.log(err))
     if(results){
         const result=results[0]
         delete result.id
@@ -10,6 +12,6 @@ export default async function userData(req,res){
         delete result.strategy
         res.json({result:result})
     }else{
-        res.json({message:`Coś poszło nie tak przy wczytywaniu danych użytkownika o loginie: ${username}. Spróbuj ponownie później.`})
+        res.json({message:`Coś poszło nie tak przy wczytywaniu danych użytkownika o loginie: ${login}. Spróbuj ponownie później.`})
     }
 }

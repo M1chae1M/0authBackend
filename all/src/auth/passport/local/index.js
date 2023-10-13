@@ -12,23 +12,20 @@ export function local_passport(){
             })
 
             if(users.length<1){
-                return done(null, false, { message: 'Nieprawidłowe dane uwierzytelniające' });
+                return done(null,false,{message: 'Nieprawidłowe dane uwierzytelniające'});
             }else{
                 const user=users[0]
                 const hashed=user.password
                 bcrypt.compare(password, hashed, (err, isMatch)=>{
                     if(err){
-                        console.log('Błąd podczas porównywania hasła.');
-                        return done(null, false);
+                        return done(null,false,{message:'Błąd podczas porównywania hasła.'});
                     }
                 
                     if(isMatch){
-                        console.log('Udane.');
                         delete user.password
-                        return done(null, user);
+                        return done(null,user,{message:'Udane.'});
                     }else{
-                        console.log('Nieudane.');
-                        return done(null, false);
+                        return done(null,false,{message:'Nieudane.'});
                     }
                 });
             }

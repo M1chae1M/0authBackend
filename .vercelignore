@@ -1,0 +1,7 @@
+# .vercelignore
+
+# Ignorowanie katalogu sesji
+/sessions/
+
+# Ignorowanie pliku sesji
+/session-data.json

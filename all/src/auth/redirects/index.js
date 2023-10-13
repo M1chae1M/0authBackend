@@ -1,8 +1,9 @@
+const {frontend_adres}=process.env
+
 export function success(req, res){
-    req.session.username=req.session.passport.user.login
-    res.redirect('http://localhost:3000/login/success');
+    res.redirect(`${frontend_adres}/login/success`);
 }
 
 export function failure(req, res){
-    res.redirect('http://localhost:3000/login/failure');
+    res.redirect(`${frontend_adres}/login/failure`);
 }

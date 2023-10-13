@@ -1,6 +1,7 @@
 import passport from "passport";
+import {signToken} from "../../token/signToken";
 
-export default function login(req, res, next){
+export function login(req, res, next){
   passport.authenticate('local', (err, user, info)=>{
     if(err){
       return next(err);
@@ -13,10 +14,9 @@ export default function login(req, res, next){
       if(err){
         return next(err);
       }
-      const {username}=req.body
-      req.session.username=username;
+      const token=signToken(user)
 
-      return res.status(200).json({ success: true, message: 'Zalogowano pomyślnie' });
+      return res.status(200).json({ success: true, message: 'Zalogowano pomyślnie', token});
     });
   })(req, res, next);
 }

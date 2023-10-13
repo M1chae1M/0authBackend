@@ -2,7 +2,7 @@ import {template_passport} from '../functions/passportTemplate'
 
 const {google_clientID,google_clientSecret}=process.env
 
-export const google_passport=()=>template_passport(
+export const google_passport=async()=>template_passport(
     require('passport-google-oauth20').Strategy,
     'google',
     google_clientID,
