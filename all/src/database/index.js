@@ -24,6 +24,12 @@ class DB{
     delete(table, where){
         return this.knex(table).where(where).del().catch(error=>'niestety nie udało się usunąć owych rekordów z bazy danych');
     }
+    count(table){
+        return this.knex(table).count('* as count').then(res=>res[0]).catch(error=>'niestety nie udało się policzyć rekordów');
+    }
+    of(page, limit){
+        return this.knex('short').select('*').limit(limit).offset(page * limit).catch(error=>'niestety nie udało się pobrać rekordów z bazy danych');
+    }
 }
 
 export const baza=new DB()

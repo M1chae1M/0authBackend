@@ -18,6 +18,7 @@ import {template_auth,template_callback} from './src/auth/passport/functions/aut
 import {ExistingEndpoints} from './src/ExistingEndpoints'
 import {userData} from './src/account/data'
 import {deleteUser} from './src/account/delete'
+import {baza} from './src/database'
 
 const {PORT}=process.env || 8080
 
@@ -49,5 +50,18 @@ app.get("/",ExistingEndpoints)
 app.post('/all',authenticate,all)
 
 app.get('/test',testowy)
+
+app.post('/count',async (req,res)=>{
+    res.json({
+        ...await baza.count(req.body.table)
+    })
+})
+
+app.get('/all/:page/:limit',async (req,res)=>{
+    const {page, limit}=req.params
+    res.json({
+        'of':await baza.of(page, limit)
+    })
+})
 
 app.listen(PORT,()=>console.log(`Running on port ${PORT}.`))
