@@ -56,9 +56,12 @@ app.post('/count',async (req,res)=>{
     res.json(await baza.count(table))
 })
 
-app.post('/all/:page/:limit',authenticate,async (req,res)=>{
-    const {page, limit}=req.params??0
+app.post('/all/:page/:limit',
+authenticate,
+async (req,res)=>{
+    const {page, limit}=req.params
     res.json(await baza.selected_page('display_data', page, limit))
+    // res.json({data:await baza.selected_page('display_data', page, limit)})
 })
 
 app.listen(PORT,()=>console.log(`Running on port ${PORT}.`))

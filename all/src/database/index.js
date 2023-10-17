@@ -3,14 +3,12 @@ import {config} from 'dotenv'
 
 config()
 const {host, user, password, database}=process.env
+const connection={host,user,password,database}
 
 class DB{
     knex
     constructor(){
-        this.knex=knex({
-            client: 'mysql2',
-            connection:{host,user,password,database}
-        });
+        this.knex=knex({client: 'mysql2', connection})
     }
     select(table, data, where){
         return this.knex.select(data).from(table).where(where).catch(error=>'niestety nie udało się pobrać owych rekordów z bazy danych');
