@@ -18,7 +18,8 @@ import {template_auth,template_callback} from './src/auth/passport/functions/aut
 import {ExistingEndpoints} from './src/ExistingEndpoints'
 import {userData} from './src/account/data'
 import {deleteUser} from './src/account/delete'
-import {baza} from './src/database'
+import count from './src/database/select/count'
+import allWithLimit from './src/allWithLimit'
 
 const {PORT}=process.env || 8080
 
@@ -37,6 +38,11 @@ app.post('/insert',authenticate,insertQuery)
 app.post('/update',authenticate,updateQuery)
 app.post('/delete',authenticate,deleteQuery)
 
+app.post('/count',count)
+
+app.post('/all',authenticate,all)
+app.post('/all/:page/:limit',authenticate,allWithLimit)
+
 app.post('/login',loginAuthMiddleware,login)
 app.post('/logged',authenticate,isLogged)
 app.post('/signin',signIn)
@@ -47,21 +53,6 @@ app.post('/account/data',authenticate,userData)
 
 app.get("/",ExistingEndpoints)
 
-app.post('/all',authenticate,all)
-
 app.get('/test',testowy)
-
-app.post('/count',async (req,res)=>{
-    const {table}=req.body
-    res.json(await baza.count(table))
-})
-
-app.post('/all/:page/:limit',
-authenticate,
-async (req,res)=>{
-    const {page, limit}=req.params
-    res.json(await baza.selected_page('display_data', page, limit))
-    // res.json({data:await baza.selected_page('display_data', page, limit)})
-})
 
 app.listen(PORT,()=>console.log(`Running on port ${PORT}.`))

@@ -30,4 +30,5 @@ class DB{
     }
 }
 
-export const baza=new DB()
+const baza=new DB()
+export default baza
