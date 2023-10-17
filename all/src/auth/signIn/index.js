@@ -1,4 +1,4 @@
-import {baza} from "../../database"
+import baza from "../../database"
 import bcrypt from 'bcryptjs'
 
 const strategy='local'

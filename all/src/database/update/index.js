@@ -1,4 +1,4 @@
-import {baza} from ".."
+import baza from ".."
 
 export async function updateQuery(req,res){
     const {data, where}=req.body

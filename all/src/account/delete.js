@@ -1,4 +1,4 @@
-import {baza} from "../database"
+import baza from "../database"
 import {checkToken} from "../token/checkToken"
 
 export async function deleteUser(req,res){

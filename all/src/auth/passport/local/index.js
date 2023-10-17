@@ -1,5 +1,5 @@
 import passport from 'passport';
-import {baza} from '../../../database';
+import baza from '../../../database';
 import bcrypt from 'bcryptjs'
 import {Strategy} from 'passport-local'
 
