@@ -28,7 +28,7 @@ class DB{
         return this.knex(table).count('* as count').then(res=>res[0]).catch(error=>'niestety nie udało się policzyć rekordów');
     }
     of(page, limit){
-        return this.knex('short').select('*').limit(limit).offset(page * limit).catch(error=>'niestety nie udało się pobrać rekordów z bazy danych');
+        return this.knex('display_data').select('*').limit(limit).offset(page * limit).catch(error=>'niestety nie udało się pobrać rekordów z bazy danych');
     }
 }
 
