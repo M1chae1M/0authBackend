@@ -11,5 +11,6 @@ export async function configPassport(){
     google_passport()
 
     passport.serializeUser((user, done)=>done(null, user));
-    passport.deserializeUser(async (user, done)=>done(null, user.id));
+    // passport.deserializeUser(async (user, done)=>done(null, user.id));
+    passport.deserializeUser(async (user, done)=>done(null, user.login));
 }
