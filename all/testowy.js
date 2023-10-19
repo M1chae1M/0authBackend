@@ -1,3 +1,3 @@
-export function testowy(req, res){
+export default function testowy(req, res){
     res.json(`testowy`)
 }

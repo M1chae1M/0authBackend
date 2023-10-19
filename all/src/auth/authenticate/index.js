@@ -1,6 +1,6 @@
 import {checkToken} from "../../token/checkToken"
 
-export function authenticate(req,res,next){
+export default function authenticate(req,res,next){
     const checked=checkToken(req.body.token??'')
     if(checked){
         next()

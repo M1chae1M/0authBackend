@@ -1,3 +1,3 @@
-export function logout(req,res){
+export default function logout(req,res){
     res.json({message:'wylogowałeś się',success:true, logged:false})
 }

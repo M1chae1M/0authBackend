@@ -1,7 +1,7 @@
 import baza from "../database"
 import {checkToken} from "../token/checkToken"
 
-export async function userData(req,res){
+export default async function userData(req,res){
     const {login}=checkToken(req.body.token)
 
     const results=await baza.select('short',[],{login:login}).catch(err=>console.log(err))

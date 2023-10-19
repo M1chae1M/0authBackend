@@ -1,4 +1,4 @@
-export function ExistingEndpoints(req,res){
+export default function ExistingEndpoints(req,res){
     const {backend_adres,frontend_adres}=process.env
     res.json({
         "endpoints":[

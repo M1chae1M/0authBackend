@@ -1,6 +1,6 @@
 import {checkToken} from "../../token/checkToken"
 
-export function isLogged(req,res){
+export default function isLogged(req,res){
     const checked=checkToken(req.body.token)
     if(checked){
         res.json({

@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 
 const strategy='local'
 
-export async function signIn(req,res){
+export default async function signIn(req,res){
     const {username, password, email, age}=req.body
     const login=username
     const result=await baza.select('short', ['id','login'],{login})

@@ -1,7 +1,7 @@
 import passport from "passport";
 import {signToken} from "../../token/signToken";
 
-export function login(req, res, next){
+export default function login(req, res, next){
   passport.authenticate('local', (err, user, info)=>{
     if(err){
       return next(err);

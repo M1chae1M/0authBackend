@@ -5,7 +5,7 @@ import {json} from 'body-parser'
 import cors from 'cors'
 import {config} from 'dotenv'
 
-export function middlewares(app){
+export default function middlewares(app){
   const {secret_key}=process.env
   config()
   app.use(headers)

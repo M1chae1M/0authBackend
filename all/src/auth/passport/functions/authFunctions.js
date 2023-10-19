@@ -11,7 +11,8 @@ export const template_callback=(req, res, next)=>{
         }
     
         if(!user){
-            res.redirect(`${frontend_adres}/login/failure?success=false&token=${null}&message="Nieprawidłowe dane uwierzytelniające z ${type}"`);
+            // res.redirect(`${frontend_adres}/login/failure?success=false&token=${null}&message="Nieprawidłowe dane uwierzytelniające z ${type}"`);
+            res.redirect(`${frontend_adres}/login/failure_t?success=false&token=${null}&message="Nieprawidłowe dane uwierzytelniające z ${type}"`);
         }
     
         req.logIn(user, (err)=>{
@@ -20,7 +21,8 @@ export const template_callback=(req, res, next)=>{
             }
     
             const token=signToken(user);
-            res.redirect(`${frontend_adres}/login/success?success=true&token=${token}&message="Zalogowano pomyślnie przez ${type}"`);
+            // res.redirect(`${frontend_adres}/login/success?success=true&token=${token}&message="Zalogowano pomyślnie przez ${type}"`);
+            res.redirect(`${frontend_adres}/login/success_t?success=true&token=${token}&message="Zalogowano pomyślnie przez ${type}"`);
         });
     })(req, res, next);
 }

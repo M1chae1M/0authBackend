@@ -1,7 +1,7 @@
 import baza from "../database"
 import {checkToken} from "../token/checkToken"
 
-export async function deleteUser(req,res){
+export default async function deleteUser(req,res){
     const {login}=checkToken(req.body.token)
 
     const result=await baza.delete('short',{login:login}).catch(err=>console.log(err))
