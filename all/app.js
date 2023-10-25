@@ -13,7 +13,7 @@ import signIn from './src/auth/signIn'
 import logout from './src/auth/logout'
 import all from './src/all'
 import isLogged from './src/auth/authenticate/isLogged'
-import {success,failure} from './src/auth/redirects'
+// import {success,failure} from './src/auth/redirects'
 import {template_auth,template_callback} from './src/auth/passport/functions/authFunctions'
 import ExistingEndpoints from './src/ExistingEndpoints'
 import userData from './src/account/data'
@@ -30,8 +30,8 @@ configPassport()
 
 app.get('/auth/:type',template_auth)
 app.get('/auth/:type/callback',template_callback)
-app.get('/auth/:type/success',success)
-app.get('/auth/:type/failure',failure)
+// app.get('/auth/:type/success',success)
+// app.get('/auth/:type/failure',failure)
 
 app.post('/select',authenticate,selectQuery)
 app.post('/insert',authenticate,insertQuery)
