@@ -8,7 +8,7 @@ export default function login(req, res, next){
     }
 
     if(!user){
-      return res.status(401).json({ success: false, message: 'Nieprawidłowe dane uwierzytelniające' });
+      return res.status(401).json({ success: false, message: 'Nieprawidłowe dane uwierzytelniające!' });
     }
     req.logIn(user, (err)=>{
       if(err){
@@ -16,7 +16,7 @@ export default function login(req, res, next){
       }
       const token=signToken(user)
 
-      return res.status(200).json({ success: true, message: 'Zalogowano pomyślnie', token});
+      return res.status(200).json({ success: true, message: 'Zalogowano pomyślnie.', token});
     });
   })(req, res, next);
 }
