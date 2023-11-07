@@ -12,5 +12,7 @@ export default async function configPassport(){
 
     passport.serializeUser((user, done)=>done(null, user));
     // passport.deserializeUser(async (user, done)=>done(null, user.id));
-    passport.deserializeUser(async (user, done)=>done(null, user.login));
+
+    // passport.deserializeUser(async (user, done)=>done(null, user.login));
+    passport.deserializeUser(async (user, done)=>done(null, user.email));
 }

@@ -15,7 +15,7 @@ export async function template_passport(Strategy, strategy, clientID, clientSecr
             const email=returnEmail(emails)
 
             const where={login,email,strategy}
-            const results=await baza.select('short', ['id', 'login', 'password'], where);
+            const results=await baza.select('short', ['id', 'login', 'password','email'], where);
         
             if(results && results.length > 0){
                 const user=results[0]
@@ -38,7 +38,7 @@ export async function template_passport(Strategy, strategy, clientID, clientSecr
                     const data={login, password, email, strategy, age:18}
                     const result=await baza.insert('short', data)
                     if(result){
-                        const users=await baza.select('short', ['id','login'], where)
+                        const users=await baza.select('short', ['id','login','email'], where)
                         const user=users[0]
                         return done(null,user,{message:'Zalogowałeś się na usera, który właśnie został stworzony.'});
                     }else{

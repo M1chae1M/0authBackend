@@ -6,8 +6,8 @@ import {Strategy} from 'passport-local'
 export function local_passport(){
     passport.use(new Strategy(
         async (username, password, done)=>{
-            const users=await baza.select('short', ['id','login', 'password'], {
-                login:username,
+            const users=await baza.select('short', ['id','login', 'password','email'], {
+                email:username,
                 strategy:'local',
             })
 
