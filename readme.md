@@ -1,12 +1,11 @@
 Technologies used to create the backend:
     ◊   express
-    ◊   axios
     ◊   babel
     ◊   bcryptjs
     ◊   jsonwebtoken
     ◊   knex
     ◊   mysql2
-    ◊ passport and its strategies for logging in with login and password, google account, facebook, github
+    ◊ passport and its strategies for logging in with login and password, google account, github
 
 Problems during application development:
     ◊ vercel is serverless, so I had to stop using state and rebuild the application to be JWT based

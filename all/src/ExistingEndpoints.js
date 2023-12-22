@@ -33,7 +33,7 @@ export default function ExistingEndpoints(req,res){
                 'react-paginate',
             ],
             problems:[
-                `When attempting to authenticate using strategies other than "local", a new window opens, where it is possible to log into the service using a google, facebook or github account. This window, however, opens an address with a different address and communicates with the parent window using postMessage this window itself has to receive data from the backend in a different way than the session due to the use of vercel as hosting, so the jwt token data is passed as url param`,
+                `When attempting to authenticate using strategies other than "local", a new window opens, where it is possible to log into the service using a google or github account. This window, however, opens an address with a different address and communicates with the parent window using postMessage this window itself has to receive data from the backend in a different way than the session due to the use of vercel as hosting, so the jwt token data is passed as url param`,
                 `The mysql server is free as a result of sending a valid request to change the data in the database, and then immediately querying the data in response will receive a record without changes, as this operation is asynchronous. Therefore, the front-end has functions that mimic the execution of operations such as delete, insert, update, in order to display the changed data immediately after a valid request, even before these changes are made to the official database.`,
             ],
             endpoints:[
@@ -41,20 +41,19 @@ export default function ExistingEndpoints(req,res){
                 `/login - subpage containing a form for logging in (page available only if you are not already logged in)`,
                 `/signin - subpage containing a form for creating a new account (available only if you are not already logged in)`,
                 `/resource_code - the page you are currently on`,
-                `/login/login_success - path to which you are directed after a successful login attempt via google, facebook or github`,
-                `/login/login_failure - path to which user is redirected after an attempt to log in via: google, facebook, or github was unsuccessful`,
+                `/login/login_success - path to which you are directed after a successful login attempt via google or github`,
+                `/login/login_failure - path to which user is redirected after an attempt to log in via: google, or github was unsuccessful`,
             ],
         },
         "backend":{
             used_package:[
                 'express',
-                'axios',
                 'babel',
                 'bcryptjs',
                 'jsonwebtoken',
                 'knex',
                 'mysql2',
-                'passport and its strategies for logging in with login and password, google account, facebook, github',
+                'passport and its strategies for logging in with login and password, google account, github',
             ],
             problems:[
                 `vercel is serverless, so I had to stop using state and rebuild the application to be JWT-based`,
