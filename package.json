@@ -43,7 +43,7 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "redis": "^4.6.10",
-    "vercel": "^33.0.1"
+    "vercel": "^32.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.15",

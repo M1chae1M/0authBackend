@@ -16,5 +16,4 @@ export default async function updateQuery(req,res){
     });
 
     res.json({query_req, db_query_imitation})
-    // res.json({query_req, db_query_imitation:{}})
 }
