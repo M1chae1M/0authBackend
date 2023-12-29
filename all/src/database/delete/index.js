@@ -11,5 +11,4 @@ export default async function deleteQuery(req,res){
     const db_query_imitation=_.filter([...selected], item=>!_.isMatch(item, where))
 
     res.json({query_req,db_query_imitation})
-    // res.json({query_req,db_query_imitation:{}})
 }
